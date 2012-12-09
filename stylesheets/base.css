@@ -1,0 +1,166 @@
+@import "reset.css";
+
+body {
+  font: 13px Arial;
+  color: #555;
+  background: #F8F8F8;
+}
+
+p {
+  line-height: 1.321em;
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: 768px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 36px;
+  padding: 0 20px;
+  background-color: #EEEEEE;
+  background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+  background-image: -ms-linear-gradient(top, #F5F5F5, #EEEEEE);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F5F5F5), to(#EEEEEE));
+  background-image: -webkit-linear-gradient(top, #F5F5F5, #EEEEEE);
+  background-image: -o-linear-gradient(top, #F5F5F5, #EEEEEE);
+  background-image: linear-gradient(top, #F5F5F5, #EEEEEE);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F5F5F5', endColorstr='#EEEEEE', GradientType=0);
+  -moz-box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 2px rgba(100, 100, 100, 0.1);
+  -webkit-box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 2px rgba(100, 100, 100, 0.1);
+  box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 2px rgba(100, 100, 100, 0.1);
+  border: 1px solid #d5d5d5;
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  z-index: 5;
+}
+
+.header h1 {
+  font-size: 16px;
+  padding: 9px 0;
+}
+
+.body {
+  position: relative;
+  background: #fff;
+  border: 1px solid #E1E1E1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 2px rgba(100, 100, 100, 0.1);
+  -webkit-box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 2px rgba(100, 100, 100, 0.1);
+  box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 2px rgba(100, 100, 100, 0.1);
+  margin: 20px 0 5px 0;
+  padding-bottom: 40px;
+  min-height: 400px;
+}
+
+
+.post-heading {
+  padding: 5px 20px;
+  background: #497EAC;
+  background-image: -moz-linear-gradient(center top , #6BA0CE, #497EAC);
+  background-image: -ms-linear-gradient(top, #6BA0CE, #497EAC);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6BA0CE), to(#497EAC));
+  background-image: -webkit-linear-gradient(top, #6BA0CE, #497EAC);
+  background-image: -o-linear-gradient(top, #6BA0CE, #497EAC);
+  background-image: linear-gradient(top, #6BA0CE, #497EAC);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6BA0CE', endColorstr='#497EAC', GradientType=0);
+  border: 1px solid #477DAE;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  margin: -1px -1px 0 -1px;
+}
+
+.post-heading h1 {
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 1px 1px 0px #477DAE;
+}
+
+.post-body {
+  padding: 20px;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 0;
+}
+.navigation .back, .navigation .forward {
+  display: block;
+  width: 362px;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+}
+.navigation a {
+  color: #777;
+  text-shadow: 0 1px 0 #fff;
+  background-image: -moz-linear-gradient(center top , #FBFBFB, #E5E5E5);
+  background-image: -ms-linear-gradient(top, #FBFBFB, #E5E5E5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FBFBFB), to(#E5E5E5));
+  background-image: -webkit-linear-gradient(top, #FBFBFB, #E5E5E5);
+  background-image: -o-linear-gradient(top, #FBFBFB, #E5E5E5);
+  background-image: linear-gradient(top, #FBFBFB, #E5E5E5);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FBFBFB', endColorstr='#E5E5E5', GradientType=0);
+}
+
+.navigation .back {
+  float: left;
+  padding-left: 20px;
+  border: 1px solid #d5d5d5;
+  margin: 0 0 -1px -1px;
+  -moz-border-radius: 0 0 0 5px;
+  -webkit-border-radius: 0 0 0 5px;
+  border-radius: 0 0 0 5px;
+}
+
+.navigation a:hover {
+  background: #E5E5E5;
+}
+
+.navigation .forward {
+  float: right;
+  padding-right: 20px;
+  text-align: right;
+  margin: 0 -1px -1px 0;
+  border: 1px solid #d5d5d5;
+  border-left: 1px solid #fff;
+  -moz-border-radius: 0 0 0 5px;
+  -webkit-border-radius: 0 0 0 5px;
+  border-radius: 0 0 5px 0;
+}
+
+.navigation .back.disabled,
+.navigation .forward.disabled {
+  color: #ccc;
+  background: #E5E5E5;
+  cursor: default;
+}
+
+.footer {
+  padding: 10px 20px;
+  font-size: 12px;
+  color: #777;
+}
+
+.social-likes {
+  clear: both;
+  position: relative;
+  padding: 0px 20px 40px 20px;
+}
+
+.social-likes #facebook-widget,
+.social-likes #twitter-widget,
+.social-likes #vk-widget,
+.social-likes #google-widget {
+  float: left;
+  margin-left: 50px;
+}
