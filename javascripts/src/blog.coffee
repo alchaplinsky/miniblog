@@ -7,11 +7,13 @@ class @Blog
       post_folder: "posts"
       posts: []
       contents: {}
-      likes:
-        google_widget: false
-        facebook_widget: false
-        vk_widget: false
-        tweeter_widget: false
+      social:
+        google_button: false
+        facebook_button: false
+        vk_button: false
+        twitter_button: false
+        vk_comments: false
+        facebook_comments: false
     , options)
 
     @posts = @options.posts
@@ -50,8 +52,7 @@ class @Blog
     "#{document.location.protocol}//#{document.domain}/#{document.location.hash}"
 
   addSocialButtons: ->
-    $(@options.root).append($('<div class="social-likes"></div'))
-    new SocialLikes(@options.likes, @url(), $(".social-likes"))
+    new Social(@options.social, @url())
 
   currentPost: ->
     document.location.hash.split(".")[0].substr(1)

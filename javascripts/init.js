@@ -1,16 +1,18 @@
 $(document).ready(function(){
-  var thred1 = Array(   // Blogposts list in array
+  var posts = Array(   // Blogposts list in array
     "sample_post"             // Should describe html files names in posts folder
   );
 
   var options = {
-    likes: {
-      google_widget: true,     // Google plus button initialization - true | false
-      facebook_widget: true,   // Facebool like button initialization - true | false
-      vk_widget: false,        // Vk Share button initialization - APP_ID | false
-      twitter_widget: true,    // Tweet button initialization - true | false
+    social: {
+      google_button: true,     // Google plus button initialization - true | false
+      facebook_button: true,   // Facebool like button initialization - true | false
+      vk_button: 3286787,        // Vk Share button initialization - APP_ID | false
+      twitter_button: true,    // Tweet button initialization - true | false
+      vk_comments: 3286787,
+      facebook_comments: false
     },
-    posts: thred1              // Array of posts
+    posts: posts              // Array of posts
   }
 
   Feed = new Blog(options);

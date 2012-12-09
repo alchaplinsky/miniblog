@@ -11,11 +11,13 @@
         post_folder: "posts",
         posts: [],
         contents: {},
-        likes: {
-          google_widget: false,
-          facebook_widget: false,
-          vk_widget: false,
-          tweeter_widget: false
+        social: {
+          google_button: false,
+          facebook_button: false,
+          vk_button: false,
+          twitter_button: false,
+          vk_comments: false,
+          facebook_comments: false
         }
       }, options);
       this.posts = this.options.posts;
@@ -68,8 +70,7 @@
     };
 
     Blog.prototype.addSocialButtons = function() {
-      $(this.options.root).append($('<div class="social-likes"></div'));
-      return new SocialLikes(this.options.likes, this.url(), $(".social-likes"));
+      return new Social(this.options.social, this.url());
     };
 
     Blog.prototype.currentPost = function() {
@@ -108,27 +109,42 @@
 
   })();
 
-  this.SocialLikes = (function() {
+  this.Social = (function() {
 
-    function SocialLikes(options, url, container) {
-      this.container = container;
+    function Social(options, url, container) {
+      this.likes = $(".social-likes");
+      this.comments = $(".social-comments");
       this.url = url;
       this.options = options;
-      if (this.options.facebook_widget) {
-        this.initFacebook();
-      }
-      if (this.options.twitter_widget) {
+      if (this.options.twitter_button) {
         this.initTwitter();
       }
-      if (this.options.vk_widget !== false) {
-        this.initVk();
-      }
-      if (this.options.google_widget) {
+      if (this.options.google_button) {
         this.initGoogle();
+      }
+      if (this.options.facebook_button) {
+        this.initFacebook();
+      }
+      if (this.options.vk_button !== false) {
+        this.initVk();
       }
     }
 
-    SocialLikes.prototype.initFacebook = function() {
+    Social.prototype.initGoogle = function() {
+      $(this.likes).append('<div id="google-widget"><div class="g-plusone" data-size="medium" data-href="' + this.url + '"></div></div>');
+      return $.getScript('https://apis.google.com/js/plusone.js', function() {
+        return gapi.plusone.go();
+      });
+    };
+
+    Social.prototype.initTwitter = function() {
+      $(this.likes).append('<div id="twitter-widget"><a href="https://twitter.com/share" class="twitter-share-button" data-via="chalexr" data-url="' + this.url + '">Tweet</a></div>');
+      return $.getScript('//platform.twitter.com/widgets.js', function() {
+        return twttr.widgets.load();
+      });
+    };
+
+    Social.prototype.initFacebook = function() {
       $("body").prepend('<div id="fb-root"></div><script>(function(d, s, id) {\
       var js, fjs = d.getElementsByTagName(s)[0];\
       if (d.getElementById(id)) return;\
@@ -136,43 +152,48 @@
       js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";\
       fjs.parentNode.insertBefore(js, fjs);\
       }(document, "script", "facebook-jssdk"));</script>');
-      $(this.container).append('<div id="facebook-widget"><fb:like href="' + this.url + '" send="false" layout="button_count" width="450" show_faces="false"></fb:like></div>');
+      $(this.likes).append('<div id="facebook-widget"><fb:like href="' + this.url + '" send="false" layout="button_count" width="450" show_faces="false"></fb:like></div>');
+      if (this.options.facebook_comments) {
+        this.facebookComments();
+      }
       if (typeof FB !== "undefined" && FB !== null) {
         return FB.XFBML.parse();
       }
     };
 
-    SocialLikes.prototype.initTwitter = function() {
-      $(this.container).append('<div id="twitter-widget"><a href="https://twitter.com/share" class="twitter-share-button" data-via="chalexr" data-url="' + this.url + '">Tweet</a></div>');
-      return $.getScript('//platform.twitter.com/widgets.js', function() {
-        return twttr.widgets.load();
-      });
-    };
-
-    SocialLikes.prototype.initVk = function() {
+    Social.prototype.initVk = function() {
       var _this = this;
-      $(this.container).append('<div id="vk-widget"><div id="vk_like"></div></div>');
+      $(this.likes).append('<div id="vk-widget"><div id="vk_like"></div></div>');
       return $.getScript('//vk.com/js/api/openapi.js?71', function() {
         VK.init({
-          apiId: _this.options.vk_widget,
+          apiId: _this.options.vk_button,
           onlyWidgets: true
         });
-        return VK.Widgets.Like("vk_like", {
+        VK.Widgets.Like("vk_like", {
           type: "button",
           height: 20,
           pageUrl: _this.url
         });
+        if (_this.options.vk_comments !== false) {
+          return _this.vkComments();
+        }
       });
     };
 
-    SocialLikes.prototype.initGoogle = function() {
-      $(this.container).append('<div id="google-widget"><div class="g-plusone" data-size="medium" data-href="' + this.url + '"></div></div>');
-      return $.getScript('https://apis.google.com/js/plusone.js', function() {
-        return gapi.plusone.go();
-      });
+    Social.prototype.facebookComments = function() {
+      return $(".social-comments").append('<div class="fb-comments" data-href="' + this.url + '" data-width="600" data-num-posts="10"></div>');
     };
 
-    return SocialLikes;
+    Social.prototype.vkComments = function() {
+      VK.Widgets.Comments("vk_comments", {
+        limit: 10,
+        width: "600",
+        attach: false
+      });
+      return $(".social-comments").append('<div id="vk_comments"></div>');
+    };
+
+    return Social;
 
   })();
 

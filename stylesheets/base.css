@@ -16,6 +16,10 @@ p {
   margin: 0 auto;
 }
 
+h2{
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 .header {
   height: 36px;
   padding: 0 20px;
@@ -163,4 +167,10 @@ p {
 .social-likes #google-widget {
   float: left;
   margin-left: 50px;
+}
+
+.social-comments {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
