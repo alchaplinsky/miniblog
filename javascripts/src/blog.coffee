@@ -52,7 +52,7 @@ class @Blog
     "#{document.location.protocol}//#{document.domain}/#{document.location.hash}"
 
   addSocialButtons: ->
-    new Social(@options.social, @url())
+    new Social(@options.social, @url(), @options.root)
 
   currentPost: ->
     document.location.hash.split(".")[0].substr(1)

@@ -70,7 +70,7 @@
     };
 
     Blog.prototype.addSocialButtons = function() {
-      return new Social(this.options.social, this.url());
+      return new Social(this.options.social, this.url(), this.options.root);
     };
 
     Blog.prototype.currentPost = function() {
@@ -112,6 +112,8 @@
   this.Social = (function() {
 
     function Social(options, url, container) {
+      $(container).append($('<div class="social-likes"></div>'));
+      $(container).append($('<div class="social-comments"></div>'));
       this.likes = $(".social-likes");
       this.comments = $(".social-comments");
       this.url = url;
@@ -188,7 +190,8 @@
       VK.Widgets.Comments("vk_comments", {
         limit: 10,
         width: "600",
-        attach: false
+        attach: false,
+        pageUrl: this.url
       });
       return $(".social-comments").append('<div id="vk_comments"></div>');
     };

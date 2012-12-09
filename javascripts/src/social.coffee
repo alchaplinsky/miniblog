@@ -1,6 +1,8 @@
 class @Social
 
   constructor: (options, url, container)->
+    $(container).append $('<div class="social-likes"></div>')
+    $(container).append $('<div class="social-comments"></div>')
     @likes = $(".social-likes")
     @comments = $(".social-comments")
     @url = url
@@ -43,6 +45,6 @@ class @Social
     $(".social-comments").append '<div class="fb-comments" data-href="'+@url+'" data-width="600" data-num-posts="10"></div>'
 
   vkComments: ->
-    VK.Widgets.Comments("vk_comments", {limit: 10, width: "600", attach: false})
+    VK.Widgets.Comments("vk_comments", {limit: 10, width: "600", attach: false, pageUrl: @url})
     $(".social-comments").append '<div id="vk_comments"></div>'
 

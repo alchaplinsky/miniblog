@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var posts = Array(   // Blogposts list in array
-    "sample_post"             // Should describe html files names in posts folder
+    "sample_post",
+    "more"             // Should describe html files names in posts folder
   );
 
   var options = {
